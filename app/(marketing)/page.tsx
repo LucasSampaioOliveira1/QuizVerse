@@ -12,7 +12,7 @@ export default function Home() {
       </div>
       <div className="flex flex-col items-center gap-y-8">
           <h1 className="text-xl lg:text-3xl font-bold text-neutral-600 max-w-[480px] text-center">Teste seus conhecimentos, desafie sua mente e divirta-se com nossos quizzes!</h1>
-          <div>
+          <div className="flex flex-col items-center gap-y-3 max-w-[330px] w-full">
             <ClerkLoading>
               <Loader className="h-5 w-5 text-muted-foreground animate-spin"/>
             </ClerkLoading>
@@ -21,11 +21,11 @@ export default function Home() {
 
               <SignedOut>
 
-                <SignUpButton mode="modal" afterSignInUrl="/learn" afterSignUpUrl="/learn">
+                <SignUpButton mode="modal" afterSignInUrl="/home" afterSignUpUrl="/home">
                   <Button size="lg" variant="secondary" className="w-full">Iniciar</Button>
                 </SignUpButton>
 
-                <SignInButton mode="modal" afterSignInUrl="/learn" afterSignUpUrl="/learn">
+                <SignInButton mode="modal" afterSignInUrl="/home" afterSignUpUrl="/home">
                   <Button size="lg" variant="primaryOutline" className="w-full">Já tenho uma conta</Button>
                 </SignInButton>
 
@@ -33,7 +33,7 @@ export default function Home() {
 
               <SignedIn>
                 <Button className="w-full" size="lg" variant="secondary" asChild>
-                  <Link href="/learn">
+                  <Link href="/home">
                     Continuar Jogando e Aprendendo
                   </Link>
                 </Button>
