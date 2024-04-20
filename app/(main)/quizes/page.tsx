@@ -1,10 +1,19 @@
-import { getQuizes } from "@/db/queries";
+import { getQuizes, getUserProgress } from "@/db/queries";
 import { List } from "./list";
 
 
 const QuizesPage = async () => {
 
-    const quizes = await getQuizes();
+    const quizesData = getQuizes();
+    const userProgressData = getUserProgress();
+
+    const [
+        quizes,
+        userProgress,
+    ] = await Promise.all ([
+        quizesData,
+        userProgressData,
+    ]);
 
     return ( 
         <div className="h-full max-w-[912px] px-3 mx-auto">
@@ -13,7 +22,7 @@ const QuizesPage = async () => {
             </h1>
             <List 
                 quizes={quizes}
-                activeQuizId={1}
+                activeQuizId={userProgress?.activeQuizId}
             />
         </div>
      );
