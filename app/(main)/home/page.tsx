@@ -10,7 +10,7 @@ const HomePage = () => {
 
             <StickyWrapper>
                 <UserProgress 
-                activeCourse={{ title: "Países", imageSrc: "/brasil.svg"}}
+                activeQuiz={{ title: "Países", imageSrc: "/brasil.svg"}}
                 hearts={5}
                 points={100}
                 hasActiveSubscription={false}

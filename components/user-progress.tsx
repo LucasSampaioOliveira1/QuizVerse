@@ -4,20 +4,20 @@ import Image from "next/image";
 import { InfinityIcon } from "lucide-react";
 
 type Props = {
-    activeCourse: { imageSrc: string; title: string};
+    activeQuiz: { imageSrc: string; title: string};
     hearts: number;
     points: number;
     hasActiveSubscription: boolean;
 };
 
-export const UserProgress = ({ activeCourse, points, hearts, hasActiveSubscription }: Props) => {
+export const UserProgress = ({ activeQuiz, points, hearts, hasActiveSubscription }: Props) => {
     return (
         <div className="flex items-center justify-between gap-x-2 w-full">
-            <Link href="/courses">
+            <Link href="/quizes">
                 <Button variant="ghost">
                     <Image 
-                        src={activeCourse.imageSrc}
-                        alt={activeCourse.title}
+                        src={activeQuiz.imageSrc}
+                        alt={activeQuiz.title}
                         className="rounded-md border"
                         width={32}
                         height={32}
