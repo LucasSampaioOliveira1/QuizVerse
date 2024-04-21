@@ -26,15 +26,15 @@ const HomePage = async () => {
 
             <StickyWrapper>
                 <UserProgress 
-                activeQuiz={{ title: "Países", imageSrc: "/brasil.svg"}}
-                hearts={5}
-                points={100}
+                activeQuiz={userProgress.activeQuiz}
+                hearts={userProgress.hearts}
+                points={userProgress.points}
                 hasActiveSubscription={false}
                 />
             </StickyWrapper>
 
             <FeedWrapper>
-                <Header title="Países"/>
+                <Header title={userProgress.activeQuiz.title}/>
             </FeedWrapper>
         </div>
     );
