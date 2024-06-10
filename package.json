@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "db:studio": "npx drizzle-kit studio",
-    "db:push": "npx drizzle-kit push:pg",
+    "db:push": "npx drizzle-kit push",
     "db:seed": "tsx ./scripts/seed.ts"
   },
   "dependencies": {
@@ -19,7 +19,6 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "dotenv": "^16.4.5",
-    "drizzle-orm": "^0.30.8",
     "lucide-react": "^0.368.0",
     "next": "14.2.1",
     "next-themes": "^0.3.0",
@@ -33,7 +32,8 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "drizzle-kit": "^0.20.17",
+    "drizzle-kit": "^0.22.7",
+    "drizzle-orm": "^0.31.2",
     "eslint": "^8",
     "eslint-config-next": "14.2.1",
     "pg": "^8.11.5",
