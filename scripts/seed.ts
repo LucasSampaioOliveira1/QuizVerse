@@ -14,6 +14,11 @@ const main = async () => {
 
         await db.delete(schema.quizes);
         await db.delete(schema.userProgress);
+        await db.delete(schema.units);
+        await db.delete(schema.lessons);
+        await db.delete(schema.challenges);
+        await db.delete(schema.challengeOptions);
+        await db.delete(schema.challengeProgress);
 
 
         await db.insert(schema.quizes).values([
@@ -49,6 +54,56 @@ const main = async () => {
             },
         ]);
 
+
+        await db.insert(schema.units).values([
+            {
+                id: 1,
+                quizId: 1,
+                title: "Países",
+                description: "Aprendendo o básico sobre Países",
+                order: 1
+            }
+        ]);
+
+
+        await db.insert(schema.lessons).values([
+            {
+                id: 1,
+                unitId: 1,
+                order: 1,
+                title: "Bandeiras",
+            },
+
+            {
+                id: 2,
+                unitId: 1,
+                order: 2,
+                title: "Localizações",
+            },
+        ]);
+
+
+        await db.insert(schema.challenges).values([
+            {
+                id: 1,
+                lessonId: 1,
+                type: "SELECT",
+                order: 1,
+                question: "Essa bandeira e de qual País ?"
+            },
+        ]);
+
+
+        await db.insert(schema.challengeOptions).values([
+            {
+                id: 1,
+                challengeId: 1,
+                imageSrc: "/brasil.svg",
+                correct: true,
+                text: "Brasil",
+                audioSrc: "",
+            }
+        ])
 
         console.log("Seeding finished");
     } catch (error) {
