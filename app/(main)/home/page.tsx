@@ -1,4 +1,4 @@
-import { getUserProgress } from "@/db/queries";
+import { getUserProgress, getUnits } from "@/db/queries";
 import { StickyWrapper } from "@/components/sticky-wrapper";
 import { FeedWrapper } from "@/components/feed-wrapper";
 import { UserProgress } from "@/components/user-progress";
@@ -7,13 +7,16 @@ import { redirect } from "next/navigation";
 
 
 const HomePage = async () => {
-
+    
     const userProgressData = getUserProgress();
+    const unitsData = getUnits();
 
     const [
-        userProgress
+        userProgress,
+        units,
     ] = await Promise.all([
-        userProgressData
+        userProgressData,
+        unitsData,
     ]);
 
 
@@ -35,6 +38,11 @@ const HomePage = async () => {
 
             <FeedWrapper>
                 <Header title={userProgress.activeQuiz.title}/>
+                {units.map((unit) => (
+                    <div key={unit.id} className="mb-10">
+                        {JSON.stringify(unit)}
+                    </div>
+                ))}
             </FeedWrapper>
         </div>
     );

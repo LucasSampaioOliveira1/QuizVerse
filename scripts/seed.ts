@@ -102,6 +102,24 @@ const main = async () => {
                 correct: true,
                 text: "Brasil",
                 audioSrc: "",
+            },
+
+            {
+                id: 2,
+                challengeId: 1,
+                imageSrc: "/paises/canada.svg",
+                correct: false,
+                text: "Canadá",
+                audioSrc: "",
+            },
+
+            {
+                id: 3,
+                challengeId: 1,
+                imageSrc: "/paises/estados-unidos.svg",
+                correct: false,
+                text: "EUA",
+                audioSrc: "",
             }
         ])
 
