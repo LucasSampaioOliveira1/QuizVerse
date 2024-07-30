@@ -1,27 +1,39 @@
-import { getUserProgress, getUnits } from "@/db/queries";
+import { getUserProgress, getUnits, getQuizProgress, getLessonPercentage } from "@/db/queries";
 import { StickyWrapper } from "@/components/sticky-wrapper";
 import { FeedWrapper } from "@/components/feed-wrapper";
 import { UserProgress } from "@/components/user-progress";
 import { Header } from "./header";
 import { redirect } from "next/navigation";
 import { Unit } from "./unit";
+import { lessons, units as unitsSchema } from "@/db/schema";
 
 
 const HomePage = async () => {
     
     const userProgressData = getUserProgress();
+    const quizProgressData = getQuizProgress();
+    const lessonPercentageData = getLessonPercentage();
     const unitsData = getUnits();
 
     const [
         userProgress,
         units,
+        quizProgress,
+        lessonPercentage,
     ] = await Promise.all([
         userProgressData,
         unitsData,
+        quizProgressData,
+        lessonPercentageData,
     ]);
 
 
     if (!userProgress || !userProgress.activeQuiz) {
+        redirect("/quizes");
+    }
+
+
+    if (!quizProgress) {
         redirect("/quizes");
     }
 
@@ -47,8 +59,10 @@ const HomePage = async () => {
                             description={unit.description}
                             title={unit.title}
                             lessons={unit.lessons}
-                            activeLesson={undefined}
-                            activeLessonPercentage={0}
+                            activeLesson={quizProgress?.activeLesson as typeof lessons.$inferSelect & {
+                                unit: typeof unitsSchema.$inferSelect;
+                            } | undefined}
+                            activeLessonPercentage={lessonPercentage}
                         />
                     </div>
                 ))}
